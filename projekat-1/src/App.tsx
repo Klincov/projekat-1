@@ -1,12 +1,26 @@
-import './App.css'; // Ovako povezujemo Tailwind sa aplikacijom
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Project from "./pages/Project";
+
+import "./App.css";
 
 function App() {
   return (
-    <div className="p-10">
-      <h1 className="text-3xl font-bold text-red-500 underline">
-        Ovo je proba Tailwinda!
-      </h1>
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen bg-gray-50">
+        <Navbar />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/o-cesmama" element={<About />} />
+          <Route path="/o-projektu" element={<Project />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
