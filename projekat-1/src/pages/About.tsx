@@ -1,18 +1,19 @@
 import { useState } from "react";
 
-import { fountains, type Fountain } from "../data/fountain";
+import { fountains, localized, type Fountain } from "../data/fountain";
 import FountainModal from "../components/FountainModal";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function About() {
+  const { lang, t } = useLanguage();
+
   const [selectedFountain, setSelectedFountain] =
     useState<Fountain | null>(null);
 
   return (
     <main className="max-w-7xl mx-auto px-6 py-12">
-      <h1 className="text-4xl font-bold">O česmama</h1>
-      <p className="mt-4 text-gray-600">
-        Informacije o istoriji i značaju javnih česama.
-      </p>
+      <h1 className="text-4xl font-bold">{t("about.title")}</h1>
+      <p className="mt-4 text-gray-600">{t("about.intro")}</p>
 
       {/* GRID ČESAMA - 3 u redu */}
       <div
@@ -21,6 +22,7 @@ export default function About() {
       >
         {fountains.map((fountain) => {
           const cover = fountain.coverImage ?? fountain.images?.[0];
+          const name = localized(fountain.name, lang);
 
           return (
             <button
@@ -34,7 +36,7 @@ export default function About() {
                 {cover ? (
                   <img
                     src={cover}
-                    alt={fountain.name}
+                    alt={name}
                     loading="lazy"
                     className="w-full h-full object-cover"
                   />
@@ -46,7 +48,7 @@ export default function About() {
               </div>
 
               <h2 className="p-4 text-lg font-semibold text-gray-900">
-                {fountain.name}
+                {name}
               </h2>
             </button>
           );

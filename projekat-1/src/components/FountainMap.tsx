@@ -9,7 +9,8 @@ import {
 
 import { divIcon } from "leaflet";
 
-import { fountains, type Fountain } from "../data/fountain";
+import { fountains, localized, type Fountain } from "../data/fountain";
+import { useLanguage } from "../i18n/LanguageContext";
 import FountainModal from "./FountainModal";
 
 import "leaflet/dist/leaflet.css";
@@ -22,6 +23,8 @@ const fountainIcon = divIcon({
 });
 
 export default function FountainMap() {
+  const { lang, t } = useLanguage();
+
   const [selectedFountain, setSelectedFountain] =
     useState<Fountain | null>(null);
 
@@ -124,25 +127,25 @@ export default function FountainMap() {
                       src={
                         fountain.coverImage ?? fountain.images?.[0]
                       }
-                      alt={fountain.name}
+                      alt={localized(fountain.name, lang)}
                       className="w-full h-[190px] object-cover rounded-lg mb-3"
                     />
                   )}
 
                   <h3 className="font-bold text-base text-gray-900 mb-2">
-                    {fountain.name}
+                    {localized(fountain.name, lang)}
                   </h3>
 
                   <p className="text-sm text-gray-600 mt-1">
-                    Status česme: {fountain.status}
+                    {t("map.fountainStatus")}: {t(`status.${fountain.status}`)}
                   </p>
 
                   <p className="text-sm text-gray-600">
-                    {fountain.waterStatus === "ispravna"
-                      ? "Voda je ispravna za piće"
-                      : fountain.waterStatus === "nema vode"
-                        ? "Nema vode"
-                        : "Status vode nije naveden"}
+                    {fountain.waterStatus === "potable"
+                      ? t("water.potable")
+                      : fountain.waterStatus === "no_water"
+                        ? t("water.no_water")
+                        : t("water.unknown")}
                   </p>
                 </div>
               </Popup>

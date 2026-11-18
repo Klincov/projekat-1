@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
-import type { Fountain } from "../data/fountain";
+import { localized, type Fountain } from "../data/fountain";
+import { useLanguage } from "../i18n/LanguageContext";
 
 type Props = {
   fountain: Fountain;
@@ -15,6 +16,8 @@ export default function FountainModal({
   onClose,
   initialImage,
 }: Props) {
+  const { lang, t } = useLanguage();
+
   const galleryImages = [
     ...new Set([
       ...(fountain.coverImage ? [fountain.coverImage] : []),
@@ -78,7 +81,7 @@ export default function FountainModal({
       <div
         role="dialog"
         aria-modal="true"
-        aria-label={fountain.name}
+        aria-label={localized(fountain.name, lang)}
         onClick={(event) => event.stopPropagation()}
         className="relative w-full max-w-6xl h-[90vh] md:h-[85vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-row"
       >
@@ -86,7 +89,7 @@ export default function FountainModal({
         <button
           onClick={onClose}
           className="absolute top-3 right-3 z-30 bg-white/90 hover:bg-gray-200 rounded-full p-2 shadow-md transition"
-          aria-label="Zatvori prozor"
+          aria-label={t("modal.close")}
         >
           <X size={22} />
         </button>
@@ -106,14 +109,16 @@ export default function FountainModal({
 
                 <img
                   src={galleryImages[activeImage]}
-                  alt={`${fountain.name} – fotografija ${activeImage + 1}`}
+                  alt={`${localized(fountain.name, lang)} – ${t("modal.photoN", {
+                    n: activeImage + 1,
+                  })}`}
                   className="absolute inset-0 w-full h-full object-contain"
                 />
               </>
             ) : (
               <div className="absolute inset-0 flex items-center justify-center">
                 <p className="text-sm text-gray-400">
-                  Fotografije još nisu dodate
+                  {t("modal.noPhotos")}
                 </p>
               </div>
             )}
@@ -123,7 +128,7 @@ export default function FountainModal({
                 <button
                   onClick={previousImage}
                   className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/90 text-white rounded-full p-2 md:p-3 transition"
-                  aria-label="Prethodna slika"
+                  aria-label={t("modal.prev")}
                 >
                   <ChevronLeft size={26} />
                 </button>
@@ -131,7 +136,7 @@ export default function FountainModal({
                 <button
                   onClick={nextImage}
                   className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/90 text-white rounded-full p-2 md:p-3 transition"
-                  aria-label="Sledeća slika"
+                  aria-label={t("modal.next")}
                 >
                   <ChevronRight size={26} />
                 </button>
@@ -155,7 +160,7 @@ export default function FountainModal({
                       ? "border-blue-500 opacity-100"
                       : "border-transparent opacity-50 hover:opacity-100"
                   }`}
-                  aria-label={`Prikaži fotografiju ${index + 1}`}
+                  aria-label={t("modal.showPhoto", { n: index + 1 })}
                 >
                   <img
                     src={image}
@@ -171,17 +176,17 @@ export default function FountainModal({
         {/* DESNA STRANA - ISTORIJA */}
         <div className="w-[45%] h-full min-h-0 overflow-y-auto p-4 sm:p-6 md:p-10">
           <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">
-            Javne česme Sremske Mitrovice
+            {t("modal.eyebrow")}
           </p>
 
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 pr-10">
-            {fountain.name}
+            {localized(fountain.name, lang)}
           </h2>
 
           <div className="w-16 h-1 bg-blue-600 rounded-full mb-8" />
 
           <div className="text-gray-700 leading-8 whitespace-pre-line">
-            {fountain.description}
+            {localized(fountain.description, lang)}
           </div>
         </div>
       </div>

@@ -1,34 +1,33 @@
-
 import FountainMap from "../components/FountainMap";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <main className="max-w-7xl mx-auto px-6 py-12">
       <section className="mb-10">
         <p className="text-blue-600 font-semibold mb-3">
-          ISTORIJA GRADA
+          {t("home.eyebrow")}
         </p>
 
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Javne česme Sremske Mitrovice
+          {t("home.title")}
         </h1>
 
         <p className="text-gray-600 max-w-2xl leading-relaxed">
-          Upoznajte javne česme Sremske Mitrovice,
-          njihove lokacije, istoriju i značaj za grad.
-          Istražite mapu i otkrijte priče koje se
-          kriju iza svakog izvora vode.
+          {t("home.intro")}
         </p>
       </section>
 
       <section>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-bold text-gray-900">
-            Mapa javnih česama
+            {t("home.mapTitle")}
           </h2>
 
           <span className="text-sm text-gray-500">
-            Interaktivna mapa
+            {t("home.mapBadge")}
           </span>
         </div>
 
