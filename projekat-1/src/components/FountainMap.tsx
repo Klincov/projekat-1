@@ -95,8 +95,10 @@ export default function FountainMap() {
   const galleryImages = selectedFountain
     ? [
         ...new Set([
-          selectedFountain.coverImage,
-          ...selectedFountain.images,
+          ...(selectedFountain.coverImage
+            ? [selectedFountain.coverImage]
+            : []),
+          ...(selectedFountain.images ?? []),
         ]),
       ]
     : [];
@@ -175,29 +177,34 @@ export default function FountainMap() {
                   },
                 }}
               >
-                <button
-                  type="button"
-                  onClick={() => openDetails(fountain)}
-                  className="w-[230px] text-left cursor-pointer"
-                >
-                  <img
-                    src={fountain.coverImage}
-                    alt={fountain.name}
-                    className="w-full h-32 object-cover rounded-lg mb-2"
-                  />
+                <div className="w-[320px] text-left">
+                  {(fountain.coverImage || fountain.images?.[0]) && (
+                    <img
+                      src={
+                        fountain.coverImage ??
+                        fountain.images?.[0]
+                      }
+                      alt={fountain.name}
+                      className="w-full h-[190px] object-cover rounded-lg mb-3"
+                    />
+                  )}
 
-                  <h3 className="font-bold text-base text-gray-900 mb-1">
+                  <h3 className="font-bold text-base text-gray-900 mb-2">
                     {fountain.name}
                   </h3>
 
-                  <p className="text-sm text-gray-600 line-clamp-3">
-                    {fountain.shortDescription}
+                  <p className="text-sm text-gray-600 mt-1">
+                    Status česme: {fountain.status}
                   </p>
 
-                  <p className="text-blue-600 text-xs font-semibold mt-3">
-                    Kliknite za više informacija →
+                  <p className="text-sm text-gray-600">
+                    {fountain.waterStatus === "ispravna"
+                      ? "Voda je ispravna za piće"
+                      : fountain.waterStatus === "nema vode"
+                        ? "Nema vode"
+                        : "Status vode nije naveden"}
                   </p>
-                </button>
+                </div>
               </Popup>
             </Marker>
           ))}
@@ -228,12 +235,17 @@ export default function FountainMap() {
 
               {/* GLAVNA SLIKA */}
               <div className="relative flex-1 min-h-0 flex items-center justify-center">
-
-                <img
-                  src={galleryImages[activeImage]}
-                  alt={selectedFountain.name}
-                  className="max-h-full max-w-full object-contain rounded-lg"
-                />
+                {galleryImages.length > 0 ? (
+                  <img
+                    src={galleryImages[activeImage]}
+                    alt={selectedFountain.name}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                ) : (
+                  <p className="text-sm text-gray-400">
+                    Fotografije još nisu dodate
+                  </p>
+                )}
 
                 {/* PRETHODNA SLIKA */}
                 {galleryImages.length > 1 && (

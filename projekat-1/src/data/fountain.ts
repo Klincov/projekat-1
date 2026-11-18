@@ -6,41 +6,222 @@ export interface Fountain {
   longitude: number;
 
   // Naslovna fotografija
-  coverImage: string;
+  coverImage?: string;
 
   // Dodatne fotografije
-  images: string[];
+  images?: string[];
 
   // Istorija i opis
   description: string;
 
   shortDescription: string;
+  status: "aktivna" | "nema vode";
+  waterStatus?: "ispravna" | "nema vode";
 }
 
 export const fountains: Fountain[] = [
   {
     id: 1,
-    name: "Primer javne česme",
-
-    latitude: 44.9764,
-    longitude: 19.6122,
-
-    coverImage: "/images/cesme/cesma-1-cover.jpg",
-
-    images: [
-      "/images/cesme/cesma-1-cover.jpg",
-      "/images/cesme/cesma-1-2.jpg",
-      "/images/cesme/cesma-1-3.jpg",
-      "/images/cesme/cesma-1-4.jpg",
-    ],
-
-    description: `
-      Ovde će biti ispisana istorija ove česme.
-
-      Možeš dodavati više pasusa, informacije o godini
-      izgradnje, značaju za grad i druge zanimljivosti.
-
-      Tekst će biti prikazan u desnoj polovini velikog prozora.
-    `,
-    shortDescription:'Istorija skracena'},
+    name: "Česma kod restorana Ribolovac (B-38)",
+    latitude: 44.9699,
+    longitude: 19.6088,
+    images: ["/images/DSC_0294.JPG"],
+    description: "Stari bunar koji je postojao produbljen je 1990. godine na dubinu od 270,00 m.",
+    shortDescription: "Javna česma kod Ribolovca",
+    status: "aktivna",
+    waterStatus: "ispravna",
+  },
+  {
+    id: 2,
+    name: "Česma kod Male Crkve (B-37)",
+    latitude: 44.9690158,
+    longitude: 19.6018815,
+    coverImage: "/images/DSC_0297.JPG",
+    images: ["/images/DSC_0303.JPG"],
+    description: "Bunar je izbušen 2000. godine.",
+    shortDescription: "Javna česma kod Male Crkve",
+    status: "aktivna",
+    waterStatus: "ispravna",
+  },
+  {
+    id: 3,
+    name: "Crvena česma (B-30)",
+    latitude: 44.9731,
+    longitude: 19.6068,
+    coverImage: "/images/DSC_0312.JPG",
+    images: ["/images/DSC_0311.JPG"],
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma poznata kao Crvena česma",
+    status: "aktivna",
+    waterStatus: "ispravna",
+  },
+  {
+    id: 4,
+    name: "Česma u Bloku B (B-26)",
+    latitude: 44.9774677,
+    longitude: 19.6274105,
+    coverImage: "/images/IMG_0656.jpeg",
+    images: ["/images/DSC_0315.JPG"],
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma u Bloku B",
+    status: "aktivna",
+    waterStatus: "ispravna",
+  },
+  {
+    id: 5,
+    name: "Česma u ulici Nikole Tesle (B-25)",
+    latitude: 44.9782852,
+    longitude: 19.6340137,
+    coverImage: "/images/IMG_0660.jpeg",
+    images: ["/images/DSC_0318.JPG"],
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma u ulici Nikole Tesle",
+    status: "aktivna",
+    waterStatus: "ispravna",
+  },
+  {
+    id: 6,
+    name: "Česma u ulici Radinački put (B-27)",
+    latitude: 44.988049,
+    longitude: 19.6272586,
+    coverImage: "/images/IMG_0663.jpeg",
+    images: ["/images/DSC_0327.JPG"],
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma u ulici Radinački put",
+    status: "aktivna",
+    waterStatus: "ispravna",
+  },
+  {
+    id: 7,
+    name: "Česma u naselju Matije Huđi (B-41)",
+    latitude: 44.9752973,
+    longitude: 19.6133456,
+    coverImage: "/images/DSC_0329.JPG",
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma u naselju Matije Huđi",
+    status: "aktivna",
+  },
+  {
+    id: 8,
+    name: "Česma u ulici Petra Preradovića (B-47)",
+    latitude: 44.9747858,
+    longitude: 19.6191597,
+    coverImage: "/images/DSC_0338.JPG",
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma u ulici Petra Preradovića",
+    status: "aktivna",
+    waterStatus: "ispravna",
+  },
+  {
+    id: 9,
+    name: "Česma kod Sokolskog doma (B-44)",
+    latitude: 44.9679047,
+    longitude: 19.6092013,
+    coverImage: "/images/DSC_0344.JPG",
+    images: ["/images/IMG_0678.jpeg"],
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma kod Sokolskog doma",
+    status: "aktivna",
+    waterStatus: "ispravna",
+  },
+  {
+    id: 10,
+    name: "Česma kod SDK (B-42)",
+    latitude: 44.9720882,
+    longitude: 19.6098356,
+    coverImage: "/images/DSC_0346.JPG",
+    images: ["/images/DSC_0348.JPG"],
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma kod SDK",
+    status: "nema vode",
+    waterStatus: "nema vode",
+  },
+  {
+    id: 11,
+    name: "Česma na Trgu Sv. Trojstva (B-40)",
+    latitude: 44.9729,
+    longitude: 19.6121,
+    coverImage: "/images/DSC_0288.JPG",
+    images: ["/images/DSC_0289.JPG"],
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma na Trgu Sv. Trojstva",
+    status: "aktivna",
+    waterStatus: "ispravna",
+  },
+  {
+    id: 12,
+    name: "Česma u ulici Miloša Obilića (B-29)",
+    latitude: 44.979824,
+    longitude: 19.6002474,
+    coverImage: "/images/DSC_0349.JPG",
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma u ulici Miloša Obilića",
+    status: "aktivna",
+    waterStatus: "ispravna",
+  },
+  {
+    id: 13,
+    name: "Česma kod Železničke stanice (B-46)",
+    latitude: 44.9822467,
+    longitude: 19.6137101,
+    coverImage: "/images/IMG_0691.jpeg",
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma kod Železničke stanice",
+    status: "nema vode",
+    waterStatus: "nema vode",
+  },
+  {
+    id: 14,
+    name: "Česma kod Doma vojske (B-43)",
+    latitude: 44.9748,
+    longitude: 19.6139,
+    coverImage: "/images/IMG_0700.jpeg",
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma kod Doma vojske",
+    status: "aktivna",
+    waterStatus: "ispravna",
+  },
+  {
+    id: 15,
+    name: "Česma kod Doma učenika srednjih škola (B-28)",
+    latitude: 44.9838577,
+    longitude: 19.6096895,
+    coverImage: "/images/IMG_0704.jpeg",
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma kod Doma učenika srednjih škola",
+    status: "nema vode",
+    waterStatus: "nema vode",
+  },
+  {
+    id: 16,
+    name: "Česma na raskrsnici Kuzminske ulice i Starog šora (B-72)",
+    latitude: 44.9713091,
+    longitude: 19.6197373,
+    coverImage: "/images/IMG_0708.jpeg",
+    images: ["/images/IMG_0712.jpeg"],
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma na raskrsnici Kuzminske ulice i Starog šora",
+    status: "nema vode",
+    waterStatus: "nema vode",
+  },
+  {
+    id: 17,
+    name: "Česma na raskrsnici Starog šora i Kralja Aleksandra Karađorđevića (B-39)",
+    latitude: 44.9720975,
+    longitude: 19.6312782,
+    coverImage: "/images/IMG_0722.jpeg",
+    description: "Istorija i detalji o ovoj česmi biće dodati.",
+    shortDescription: "Javna česma na raskrsnici Starog šora i Kralja Aleksandra Karađorđevića",
+    status: "nema vode",
+    waterStatus: "nema vode",
+  },
+  {
+    id: 18,
+    name: "Česma u ulici Novi Šor",
+    latitude: 44.9746225,
+    longitude: 19.6026763,
+    description: "Lokacija i fotografija česme biće dodate.",
+    shortDescription: "Javna česma u ulici Novi Šor",
+    status: "nema vode",
+  },
 ];
