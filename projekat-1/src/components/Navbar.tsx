@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 const links = [
   { name: "Početna", path: "/" },
   { name: "O česmama", path: "/o-cesmama" },
+  { name: "Galerija", path: "/galerija"},
   { name: "O projektu", path: "/o-projektu" },
+  { name: "Interkativne Radionice", path: "/radionice" },
 ];
 
 export default function Navbar() {
