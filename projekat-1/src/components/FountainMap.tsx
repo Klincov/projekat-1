@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import {
   MapContainer,
@@ -8,6 +8,11 @@ import {
 } from "react-leaflet";
 
 import { divIcon } from "leaflet";
+import {
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 
 import { fountains, localized, type Fountain } from "../data/fountain";
 import { useLanguage } from "../i18n/LanguageContext";
@@ -25,8 +30,16 @@ const fountainIcon = divIcon({
 export default function FountainMap() {
   const { lang, t } = useLanguage();
 
-  const [selectedFountain, setSelectedFountain] =
-    useState<Fountain | null>(null);
+  // Otvorena česma se čuva u adresi (?cesma=7), pa se link može
+  // podeliti, a QR kod otvara tačno tu česmu
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const selectedFountain =
+    fountains.find(
+      (fountain) => fountain.id === Number(searchParams.get("cesma"))
+    ) ?? null;
 
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(
     null
@@ -52,11 +65,24 @@ export default function FountainMap() {
 
   const openDetails = (fountain: Fountain) => {
     cancelClose();
-    setSelectedFountain(fountain);
+
+    const next = new URLSearchParams(searchParams);
+    next.set("cesma", String(fountain.id));
+    setSearchParams(next, { state: { fromApp: true } });
   };
 
   const closeDetails = () => {
-    setSelectedFountain(null);
+    // Otvoreno klikom na sajtu: vraćamo se korak unazad.
+    // Otvoreno preko QR koda ili linka: samo uklanjamo parametar,
+    // da dugme "nazad" ne izbaci posetioca sa sajta.
+    if (location.state?.fromApp) {
+      navigate(-1);
+      return;
+    }
+
+    const next = new URLSearchParams(searchParams);
+    next.delete("cesma");
+    setSearchParams(next, { replace: true });
   };
 
   // Čišćenje timera

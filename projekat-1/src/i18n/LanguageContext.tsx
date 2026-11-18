@@ -24,6 +24,14 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 function getInitialLanguage(): Language {
   try {
+    // Link ili QR kod može da zada jezik: ?lang=sr
+    const fromUrl = new URLSearchParams(window.location.search).get("lang");
+    if (fromUrl === "sr" || fromUrl === "en") return fromUrl;
+  } catch {
+    // ignoriši
+  }
+
+  try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === "sr" || saved === "en") return saved;
   } catch {
