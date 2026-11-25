@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Gallery from "./pages/Gallery";
 import Project from "./pages/Project";
+import Workshops from "./pages/Workshops";
 
 import "./App.css";
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/galerija" element={<Gallery />} />
           <Route path="/o-cesmama" element={<About />} />
           <Route path="/o-projektu" element={<Project />} />
+          <Route path="/radionice" element={<Workshops />} />
         </Routes>
       </div>
     </BrowserRouter>

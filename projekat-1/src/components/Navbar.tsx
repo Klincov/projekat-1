@@ -8,6 +8,7 @@ const links = [
   { key: "nav.about", path: "/o-cesmama" },
   { key: "nav.gallery", path: "/galerija" },
   { key: "nav.workshops", path: "/radionice" },
+  { key: "nav.project", path: "/o-projektu" },
 ];
 
 const languages: Language[] = ["sr", "en"];

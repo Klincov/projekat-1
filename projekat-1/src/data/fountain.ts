@@ -9,8 +9,10 @@ export const localized = (text: LocalizedText, lang: Language): string =>
 export interface Fountain {
   id: number;
   name: LocalizedText;
-  latitude: number;
-  longitude: number;
+  // Koordinate su opcione: česma bez koordinata se ne prikazuje na mapi,
+  // ali se prikazuje na stranicama "O česmama" i "Galerija"
+  latitude?: number;
+  longitude?: number;
 
   // Naslovna fotografija
   coverImage?: string;
@@ -57,8 +59,8 @@ export const fountains: Fountain[] = [
   {
     id: 2,
     name: {
-      sr: "Česma kod Male Crkve (B-37)",
-      en: "Fountain near the Small Church (B-37)",
+      sr: "Česma kod Crkve Sv. Stefana (B-37)",
+      en: "Fountain near the Church of St. Stephen (B-37)",
     },
     latitude: 44.9690158,
     longitude: 19.6018815,
@@ -69,8 +71,8 @@ export const fountains: Fountain[] = [
       en: "The well was drilled in 2000.",
     },
     shortDescription: {
-      sr: "Javna česma kod Male Crkve",
-      en: "Public fountain near the Small Church",
+      sr: "Javna česma kod Crkve Sv. Stefana",
+      en: "Public fountain near the Church of St. Stephen",
     },
     status: "active",
     waterStatus: "potable",
@@ -183,8 +185,8 @@ export const fountains: Fountain[] = [
   {
     id: 9,
     name: {
-      sr: "Česma kod Sokolskog doma (B-44)",
-      en: "Fountain near Sokolski Dom (B-44)",
+      sr: "Česma kod Partizanovog stadiona (B-44)",
+      en: "Fountain near the Partizan Stadium (B-44)",
     },
     latitude: 44.9679047,
     longitude: 19.6092013,
@@ -192,8 +194,8 @@ export const fountains: Fountain[] = [
     images: ["/images/IMG_0678.jpeg"],
     description: PLACEHOLDER_HISTORY,
     shortDescription: {
-      sr: "Javna česma kod Sokolskog doma",
-      en: "Public fountain near Sokolski Dom",
+      sr: "Javna česma kod Partizanovog stadiona",
+      en: "Public fountain near the Partizan Stadium",
     },
     status: "active",
     waterStatus: "potable",
@@ -201,8 +203,8 @@ export const fountains: Fountain[] = [
   {
     id: 10,
     name: {
-      sr: "Česma kod SDK (B-42)",
-      en: "Fountain near SDK (B-42)",
+      sr: "Česma u ulici Stari Šor kod SDK (B-42)",
+      en: "Fountain on Stari Šor Street near SDK (B-42)",
     },
     latitude: 44.9720882,
     longitude: 19.6098356,
@@ -210,8 +212,8 @@ export const fountains: Fountain[] = [
     images: ["/images/DSC_0348.JPG"],
     description: PLACEHOLDER_HISTORY,
     shortDescription: {
-      sr: "Javna česma kod SDK",
-      en: "Public fountain near SDK",
+      sr: "Javna česma u ulici Stari Šor kod SDK",
+      en: "Public fountain on Stari Šor Street near SDK",
     },
     status: "no_water",
     waterStatus: "no_water",
@@ -288,16 +290,16 @@ export const fountains: Fountain[] = [
   {
     id: 15,
     name: {
-      sr: "Česma kod Doma učenika srednjih škola (B-28)",
-      en: "Fountain near the Secondary School Students' Dormitory (B-28)",
+      sr: "Česma u MZ Slobodan Bajić Paja (B-28)",
+      en: "Fountain in the Slobodan Bajić Paja Local Community (B-28)",
     },
     latitude: 44.9838577,
     longitude: 19.6096895,
     coverImage: "/images/IMG_0704.jpeg",
     description: PLACEHOLDER_HISTORY,
     shortDescription: {
-      sr: "Javna česma kod Doma učenika srednjih škola",
-      en: "Public fountain near the Secondary School Students' Dormitory",
+      sr: "Javna česma u MZ Slobodan Bajić Paja",
+      en: "Public fountain in the Slobodan Bajić Paja Local Community",
     },
     status: "no_water",
     waterStatus: "no_water",
@@ -354,5 +356,91 @@ export const fountains: Fountain[] = [
       en: "Public fountain on Novi Šor Street",
     },
     status: "no_water",
+  },
+  {
+    id: 19,
+    name: {
+      sr: "Česma u centru (B-1)",
+      en: "Fountain in the City Center (B-1)",
+    },
+    latitude: 44.96495,
+    longitude: 19.59886,
+    coverImage: "/images/IMG_1775.JPEG",
+    images: ["/images/IMG_1777.JPEG"],
+    description: PLACEHOLDER_HISTORY,
+    shortDescription: {
+      sr: "Javna česma u centru grada",
+      en: "Public fountain in the city center",
+    },
+    status: "active",
+    waterStatus: "potable",
+  },
+  {
+    id: 20,
+    name: {
+      sr: "Česma u Radničkoj ulici (B-20)",
+      en: "Fountain on Radnička Street (B-20)",
+    },
+    latitude: 44.95957,
+    longitude: 19.60308,
+    coverImage: "/images/IMG_1788.JPEG",
+    images: ["/images/IMG_1787.JPEG", "/images/IMG_1786.JPEG"],
+    description: PLACEHOLDER_HISTORY,
+    shortDescription: {
+      sr: "Javna česma u Radničkoj ulici",
+      en: "Public fountain on Radnička Street",
+    },
+    status: "active",
+  },
+  {
+    id: 21,
+    name: {
+      sr: "Česma kod starog brodogradilišta",
+      en: "Fountain near the Old Shipyard",
+    },
+    latitude: 44.96763,
+    longitude: 19.59527,
+    coverImage: "/images/IMG_1771.JPEG",
+    images: ["/images/IMG_1773.JPEG"],
+    description: PLACEHOLDER_HISTORY,
+    shortDescription: {
+      sr: "Javna česma kod starog brodogradilišta",
+      en: "Public fountain near the old shipyard",
+    },
+    status: "active",
+  },
+  {
+    id: 22,
+    name: {
+      sr: "Česma u ulici Mačvanski kej (B-22)",
+      en: "Fountain on Mačvanski Kej Street (B-22)",
+    },
+    latitude: 44.96843,
+    longitude: 19.59805,
+    coverImage: "/images/IMG_1763.JPEG",
+    images: ["/images/IMG_1755.JPEG"],
+    description: PLACEHOLDER_HISTORY,
+    shortDescription: {
+      sr: "Javna česma u ulici Mačvanski kej",
+      en: "Public fountain on Mačvanski Kej Street",
+    },
+    status: "active",
+  },
+  {
+    id: 23,
+    name: {
+      sr: "Česma u Savskoj ulici (B-24)",
+      en: "Fountain on Savska Street (B-24)",
+    },
+    latitude: 44.96999,
+    longitude: 19.58686,
+    coverImage: "/images/IMG_1768.JPEG",
+    images: ["/images/IMG_1767.JPEG"],
+    description: PLACEHOLDER_HISTORY,
+    shortDescription: {
+      sr: "Javna česma u Savskoj ulici",
+      en: "Public fountain on Savska Street",
+    },
+    status: "active",
   },
 ];

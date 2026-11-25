@@ -105,7 +105,18 @@ export default function FountainMap() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
 
-          {fountains.map((fountain) => (
+          {fountains
+            .filter(
+              (
+                fountain
+              ): fountain is Fountain & {
+                latitude: number;
+                longitude: number;
+              } =>
+                fountain.latitude !== undefined &&
+                fountain.longitude !== undefined
+            )
+            .map((fountain) => (
             <Marker
               key={fountain.id}
               position={[fountain.latitude, fountain.longitude]}
