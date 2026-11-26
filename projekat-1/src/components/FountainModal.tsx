@@ -4,6 +4,59 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { localized, type Fountain } from "../data/fountain";
 import { useLanguage } from "../i18n/LanguageContext";
 
+const englishLithology: Record<string, string> = {
+  humus: "humus",
+  glina: "clay",
+  pesak: "sand",
+  "krupnozrni pesak": "coarse-grained sand",
+  šljunak: "gravel",
+  "glina i peskovita glina": "clay and sandy clay",
+  "peskoviti šljunak": "gravelly sand",
+  "glinoviti pesak": "clayey sand",
+  "glina žute boje": "yellow clay",
+  "pesak sive boje": "grey sand",
+  "glina sive boje": "grey clay",
+  "prašinasti pesak žute boje": "yellow silty sand",
+  "peskovita glina": "sandy clay",
+  peščar: "sandstone",
+  "pesak žute boje": "yellow sand",
+  "žuti krupnozrni pesak": "yellow coarse-grained sand",
+  "krupnozrni šljunak": "coarse gravel",
+  "šljunkoviti pesak": "gravelly sand",
+  "krupnozrni šljunkoviti pesak": "coarse gravelly sand",
+  "gline i peskovite gline": "clays and sandy clays",
+  "sitnozrni pesak": "fine-grained sand",
+  "poluvezani pesak": "semi-consolidated sand",
+  nasip: "fill",
+  "pesak plave boje": "blue sand",
+  "peskovi i glinoviti peskovi": "sands and clayey sands",
+  "muljeviti pesak": "silty sand",
+  "prašinasti pesak": "silty sand",
+  "sitnozrni šljunak": "fine-grained gravel",
+  "laporovita glina": "marly clay",
+  laporac: "marl",
+  "srednjezrni šljunak": "medium-grained gravel",
+  "srednjezrni pesak": "medium-grained sand",
+  "srednjezrni pesak, kaptirani sloj":
+    "medium-grained sand, captured layer",
+  "refulisani pesak": "hydraulically placed sand",
+  "zaglinjen pesak": "clayey sand",
+  "krupnozrni pesak, kaptirani sloj":
+    "coarse-grained sand, captured layer",
+  "prašinasti pesak žute boje, kaptirani sloj":
+    "yellow silty sand, captured layer",
+  "šljunak, kaptirani sloj": "gravel, captured layer",
+  "pesak, kaptirani sloj": "sand, captured layer",
+  "žuti krupnozrni pesak, kaptirani sloj":
+    "yellow coarse-grained sand, captured layer",
+  "sitnozrni pesak, kaptirani sloj": "fine-grained sand, captured layer",
+  "krupnozrni šljunkoviti pesak, kaptirani sloj":
+    "coarse gravelly sand, captured layer",
+};
+
+const localizedLithology = (material: string, lang: "sr" | "en") =>
+  lang === "en" ? englishLithology[material] ?? material : material;
+
 type Props = {
   fountain: Fountain;
   onClose: () => void;
@@ -185,8 +238,87 @@ export default function FountainModal({
 
           <div className="w-16 h-1 bg-blue-600 rounded-full mb-8" />
 
-          <div className="text-gray-700 leading-8 whitespace-pre-line">
-            {localized(fountain.description, lang)}
+          <div className="text-gray-700 leading-8 font-bold">
+            {fountain.profile ? (
+              <>
+                <p>
+                  {t("map.fountainStatus")}: {t(`status.${fountain.status}`)}
+                </p>
+                <p className="mb-4">
+                  {fountain.waterStatus === "potable"
+                    ? t("water.potable")
+                    : fountain.waterStatus === "no_water"
+                      ? t("water.no_water")
+                      : t("water.unknown")}
+                </p>
+
+                {fountain.profile.totalDepth && (
+                  <p>
+                    <strong>{t("profile.totalDepth")}:</strong>{" "}
+                    {fountain.profile.totalDepth}
+                  </p>
+                )}
+                {fountain.profile.hydrogeologicalZone && (
+                  <p>
+                    <strong>{t("profile.hydrogeologicalZone")}:</strong>{" "}
+                    {lang === "en"
+                      ? fountain.profile.hydrogeologicalZone.replace(
+                          " i ",
+                          " and "
+                        )
+                      : fountain.profile.hydrogeologicalZone}
+                  </p>
+                )}
+                {fountain.profile.waterTemperature && (
+                  <p>
+                    <strong>{t("profile.waterTemperature")}:</strong>{" "}
+                    {fountain.profile.waterTemperature}
+                  </p>
+                )}
+                {fountain.profile.yearLabel && fountain.profile.yearValue && (
+                  <p>
+                    <strong>
+                      {localized(fountain.profile.yearLabel, lang)}:
+                    </strong>{" "}
+                    {lang === "en"
+                      ? fountain.profile.yearValue
+                          .replace("oko ", "around ")
+                          .replace(" godine", "")
+                          .replace("1970-te", "1970s")
+                      : fountain.profile.yearValue}
+                  </p>
+                )}
+
+                {fountain.profile.notes?.map((note) => (
+                  <p key={note.sr} className="mt-4">
+                    {localized(note, lang)}
+                  </p>
+                ))}
+
+                {fountain.profile.lithology &&
+                  fountain.profile.lithology.length > 0 && (
+                    <>
+                      <h3 className="font-bold mt-5 mb-2">
+                        {t("profile.lithology")}:
+                      </h3>
+                      <ul className="list-disc pl-6">
+                        {fountain.profile.lithology.map(
+                          ([depthRange, material]) => (
+                            <li key={depthRange}>
+                              {depthRange} –{" "}
+                              {localizedLithology(material, lang)}
+                            </li>
+                          )
+                        )}
+                      </ul>
+                    </>
+                  )}
+              </>
+            ) : (
+              <p className="whitespace-pre-line">
+                {localized(fountain.description, lang)}
+              </p>
+            )}
           </div>
         </div>
       </div>

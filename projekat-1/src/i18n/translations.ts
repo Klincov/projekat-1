@@ -55,6 +55,10 @@ export const translations: Record<Language, Record<string, string>> = {
     "modal.noPhotos": "Fotografije još nisu dodate",
     "modal.photoN": "fotografija {n}",
     "modal.showPhoto": "Prikaži fotografiju {n}",
+    "profile.totalDepth": "Ukupna dubina profila",
+    "profile.hydrogeologicalZone": "Hidrogeološka zona",
+    "profile.waterTemperature": "Temperatura vode",
+    "profile.lithology": "Litološki sastav",
   },
 
   en: {
@@ -112,5 +116,9 @@ export const translations: Record<Language, Record<string, string>> = {
     "modal.noPhotos": "Photos have not been added yet",
     "modal.photoN": "photo {n}",
     "modal.showPhoto": "Show photo {n}",
+    "profile.totalDepth": "Total profile depth",
+    "profile.hydrogeologicalZone": "Hydrogeological zone",
+    "profile.waterTemperature": "Water temperature",
+    "profile.lithology": "Lithological composition",
   },
 };
