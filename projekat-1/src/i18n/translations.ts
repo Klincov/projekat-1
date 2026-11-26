@@ -2,7 +2,7 @@ export type Language = "sr" | "en";
 
 export const translations: Record<Language, Record<string, string>> = {
   sr: {
-    "app.title": "Fontane SM",
+    "app.title": "Česme SM",
 
     "nav.brand": "Česme SM",
     "nav.home": "Početna",
