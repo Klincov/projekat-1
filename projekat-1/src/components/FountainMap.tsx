@@ -93,7 +93,7 @@ export default function FountainMap() {
   return (
     <>
       {/* MAPA */}
-      <div className="w-full h-[550px] rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+      <div className="w-full h-[60vh] min-h-[360px] sm:h-[550px] rounded-2xl overflow-hidden shadow-lg border border-gray-200">
         <MapContainer
           center={[44.9764, 19.6122]}
           zoom={15}
@@ -158,7 +158,7 @@ export default function FountainMap() {
                   },
                 }}
               >
-                <div className="w-[320px] text-left">
+                <div className="w-[min(320px,70vw)] text-left">
                   {(fountain.coverImage || fountain.images?.[0]) && (
                     <img
                       src={

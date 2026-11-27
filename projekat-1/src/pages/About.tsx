@@ -11,15 +11,11 @@ export default function About() {
     useState<Fountain | null>(null);
 
   return (
-    <main className="max-w-7xl mx-auto px-6 py-12">
-      <h1 className="text-4xl font-bold">{t("about.title")}</h1>
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <h1 className="text-3xl sm:text-4xl font-bold">{t("about.title")}</h1>
       <p className="mt-4 text-gray-600">{t("about.intro")}</p>
 
-      {/* GRID ČESAMA - 3 u redu */}
-      <div
-        className="mt-10 grid gap-6"
-        style={{ gridTemplateColumns: "repeat(3, minmax(0, 1fr))" }}
-      >
+      <div className="mt-8 sm:mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {fountains.map((fountain) => {
           const cover = fountain.coverImage ?? fountain.images?.[0];
           const name = localized(fountain.name, lang);
@@ -47,7 +43,7 @@ export default function About() {
                 )}
               </div>
 
-              <h2 className="p-4 text-lg font-semibold text-gray-900">
+              <h2 className="p-4 text-base sm:text-lg font-semibold text-gray-900">
                 {name}
               </h2>
             </button>

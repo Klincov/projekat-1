@@ -73,20 +73,15 @@ export default function Workshops() {
   const today = todayIso();
 
   return (
-    <main className="max-w-7xl mx-auto px-6 py-12">
-      <h1 className="text-4xl font-bold text-gray-900">
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
         {t("workshops.title")}
       </h1>
       <p className="mt-4 text-gray-600 max-w-2xl">
         {t("workshops.intro")}
       </p>
 
-      <div
-        className="mt-10 grid gap-6"
-        style={{
-          gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-        }}
-      >
+      <div className="mt-8 sm:mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {workshops.map((workshop) => {
           const status = getStatus(workshop.date, today);
 

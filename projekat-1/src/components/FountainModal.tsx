@@ -136,7 +136,7 @@ export default function FountainModal({
         aria-modal="true"
         aria-label={localized(fountain.name, lang)}
         onClick={(event) => event.stopPropagation()}
-        className="relative w-full max-w-6xl h-[90vh] md:h-[85vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-row"
+        className="relative w-full max-w-6xl h-[90vh] h-[90dvh] md:h-[85vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row"
       >
         {/* X DUGME */}
         <button
@@ -148,7 +148,7 @@ export default function FountainModal({
         </button>
 
         {/* LEVA STRANA - GALERIJA */}
-        <div className="w-[55%] h-full bg-gray-950 flex flex-col min-h-0 shrink-0">
+        <div className="w-full h-[45%] md:w-[55%] md:h-full bg-gray-950 flex flex-col min-h-0 shrink-0">
           {/* GLAVNA SLIKA */}
           <div className="relative flex-1 min-h-0 overflow-hidden bg-black">
             {imageCount > 0 ? (
@@ -227,7 +227,7 @@ export default function FountainModal({
         </div>
 
         {/* DESNA STRANA - ISTORIJA */}
-        <div className="w-[45%] h-full min-h-0 overflow-y-auto p-4 sm:p-6 md:p-10">
+        <div className="w-full h-[55%] md:w-[45%] md:h-full min-h-0 overflow-y-auto p-4 sm:p-6 md:p-10">
           <p className="text-blue-600 font-semibold text-sm uppercase tracking-wider mb-3">
             {t("modal.eyebrow")}
           </p>
@@ -238,7 +238,7 @@ export default function FountainModal({
 
           <div className="w-16 h-1 bg-blue-600 rounded-full mb-8" />
 
-          <div className="text-gray-700 leading-8 font-bold">
+          <div className="text-gray-700 leading-7 md:leading-8 font-bold">
             {fountain.profile ? (
               <>
                 <p>

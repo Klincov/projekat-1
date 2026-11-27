@@ -11,6 +11,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.workshops": "Interaktivne radionice",
     "nav.project": "O projektu",
     "nav.language": "Jezik",
+    "nav.openMenu": "Otvori navigaciju",
+    "nav.closeMenu": "Zatvori navigaciju",
 
     "home.eyebrow": "ISTORIJA GRADA",
     "home.title": "Javne česme Sremske Mitrovice",
@@ -71,6 +73,8 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.workshops": "Interactive Workshops",
     "nav.project": "About the Project",
     "nav.language": "Language",
+    "nav.openMenu": "Open navigation",
+    "nav.closeMenu": "Close navigation",
 
     "home.eyebrow": "HISTORY OF THE CITY",
     "home.title": "Public Fountains of Sremska Mitrovica",
