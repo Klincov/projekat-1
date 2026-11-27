@@ -14,7 +14,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.openMenu": "Otvori navigaciju",
     "nav.closeMenu": "Zatvori navigaciju",
     "credits.ariaLabel": "Logotipi projekta i fondacije",
-    "credits.supportedBy": "Projekat realizovan uz podršku",
+    "credits.supportedBy": "Projekat je finansiran od strane",
     "credits.projectLogoAlt": "Digitalne javne česme Sremske Mitrovice",
     "credits.foundationLogoAlt": "Fondacija EVZ",
 
@@ -104,7 +104,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.openMenu": "Open navigation",
     "nav.closeMenu": "Close navigation",
     "credits.ariaLabel": "Project and foundation logos",
-    "credits.supportedBy": "Project made possible with support from",
+    "credits.supportedBy": "Project is funded by",
     "credits.projectLogoAlt": "Digital Public Fountains of Sremska Mitrovica",
     "credits.foundationLogoAlt": "EVZ Foundation",
 
