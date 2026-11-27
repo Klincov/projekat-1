@@ -21,12 +21,12 @@ export interface Fountain {
   images?: string[];
 
   // Istorija i opis
-  description: LocalizedText;
+  description?: LocalizedText;
 
   shortDescription: LocalizedText;
 
   // Neutralni kodovi - prevode se pri prikazu
-  status: "active" | "no_water";
+  status?: "active" | "no_water";
   waterStatus?: "potable" | "no_water";
   profile?: FountainProfile;
 }
@@ -358,21 +358,18 @@ const fountainData: Fountain[] = [
     },
     latitude: 44.9746225,
     longitude: 19.6026763,
-    description: {
-      sr: "Lokacija i fotografija česme biće dodate.",
-      en: "The location and photo of this fountain will be added.",
-    },
+    coverImage: "/images/novi-sor-cover.jpg",
+    images: ["/images/novi-sor-detail.jpg"],
     shortDescription: {
       sr: "Javna česma u ulici Novi Šor",
       en: "Public fountain on Novi Šor Street",
     },
-    status: "no_water",
   },
   {
     id: 19,
     name: {
-      sr: "Česma u centru (B-1)",
-      en: "Fountain in the City Center (B-1)",
+      sr: "Česma u centru Mačvanske Mitrovice (B-1)",
+      en: "Fountain in the Center of Mačvanska Mitrovica (B-1)",
     },
     latitude: 44.96495,
     longitude: 19.59886,
@@ -380,8 +377,8 @@ const fountainData: Fountain[] = [
     images: ["/images/IMG_1777.JPEG"],
     description: PLACEHOLDER_HISTORY,
     shortDescription: {
-      sr: "Javna česma u centru grada",
-      en: "Public fountain in the city center",
+      sr: "Javna česma u centru Mačvanske Mitrovice",
+      en: "Public fountain in the center of Mačvanska Mitrovica",
     },
     status: "active",
     waterStatus: "potable",
@@ -891,15 +888,40 @@ const fountainProfiles: Record<number, FountainProfile> = {
       ["267,50–270,00 m", "glina"],
     ],
   },
-  18: {
+  19: {
+    totalDepth: "309 m",
+    hydrogeologicalZone: "III",
+    waterTemperature: "22 °C",
     notes: [
       {
-        sr: "Lokacija i fotografija česme biće dodate.",
-        en: "The location and photo of this fountain will be added.",
+        sr: "Česma se nalazi u centru Mačvanske Mitrovice.",
+        en: "The fountain is located in the center of Mačvanska Mitrovica.",
       },
     ],
+    lithology: [
+      ["0,00–1,00 m", "humus"],
+      ["1,00–8,00 m", "peskovita glina"],
+      ["8,00–22,00 m", "prašinasti pesak"],
+      ["22,00–25,00 m", "peskoviti šljunak"],
+      ["25,00–27,00 m", "peskovita glina"],
+      ["27,00–61,00 m", "peskoviti šljunak"],
+      ["61,00–62,00 m", "poluvezani pesak"],
+      ["62,00–110,00 m", "laporovita glina"],
+      ["110,00–112,50 m", "glina"],
+      ["112,50–116,50 m", "srednjezrni šljunak"],
+      ["116,50–122,80 m", "sitnozrni pesak"],
+      ["122,80–124,00 m", "peskovita glina"],
+      ["124,00–125,00 m", "glina"],
+      ["125,00–138,00 m", "laporovita glina"],
+      ["138,00–140,00 m", "peskoviti šljunak"],
+      ["140,00–174,00 m", "glina"],
+      ["174,00–202,50 m", "laporovita glina"],
+      ["202,50–206,70 m", "srednjezrni pesak"],
+      ["206,70–300,00 m", "gline i peskovite gline"],
+      ["300,00–307,00 m", "pesak (kaptirani sloj, III hidrogeološka zona)"],
+      ["307,00–309,00 m", "glina"],
+    ],
   },
-  19: {},
   20: {
     totalDepth: "190 m",
     hydrogeologicalZone: "II",

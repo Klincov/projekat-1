@@ -7,16 +7,22 @@ export default function Home() {
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
       <section className="mb-8 sm:mb-10">
-        <p className="text-blue-600 font-semibold mb-3">
-          {t("home.eyebrow")}
-        </p>
-
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
           {t("home.title")}
         </h1>
 
+        <p className="text-blue-600 font-semibold mb-3">
+          {t("home.eyebrow")}
+        </p>
+
         <p className="text-gray-600 max-w-2xl leading-relaxed">
           {t("home.intro")}
+        </p>
+        <p className="text-gray-600 max-w-2xl leading-relaxed mt-4">
+          {t("home.mapDescription")}
+        </p>
+        <p className="text-gray-700 font-semibold mt-4">
+          {t("home.coverage")}
         </p>
       </section>
 

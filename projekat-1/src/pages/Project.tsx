@@ -16,12 +16,22 @@ export default function Project() {
       <div className="w-16 h-1 bg-blue-600 rounded-full mt-6 mb-8" />
 
       <div className="max-w-3xl space-y-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-700">
-        <p>{t("project.p1")}</p>
-
-        {/* Saradnja i finansiranje */}
-        <p className="border-l-4 border-blue-600 pl-5 text-gray-600">
-          {t("project.p2")}
+        <p>
+          {t("project.p1")} {t("project.p1Source")}{" "}
+          <a
+            href="https://vodovodsm.rs/kvalitet-vode/javne-cesme"
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-700 underline underline-offset-2"
+          >
+            {t("project.p1SourceLink")}
+          </a>
+          .
         </p>
+        <p>{t("project.p2")}</p>
+        <p>{t("project.p3")}</p>
+        <p>{t("project.p4")}</p>
+        <p>{t("project.p5")}</p>
       </div>
     </main>
   );

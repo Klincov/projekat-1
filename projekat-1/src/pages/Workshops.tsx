@@ -1,76 +1,158 @@
-import { CalendarDays, Clock, MapPin, Users } from "lucide-react";
-
 import { useLanguage } from "../i18n/LanguageContext";
 import type { Language } from "../i18n/translations";
 
-type Workshop = {
-  id: number;
-  date: string; // YYYY-MM-DD
-  time: string; // HH:MM
-  location: string;
-  participants: number;
+type WorkshopArtwork = {
+  file: string;
+  students: string;
+  classAndSchool: Record<Language, string>;
 };
 
-// Novu radionicu dodaješ ovde
-const workshops: Workshop[] = [
+type WorkshopPhoto = {
+  file: string;
+  caption: Record<Language, string>;
+};
+
+const workshopPhotos: WorkshopPhoto[] = [
   {
-    id: 1,
-    date: "2026-11-25",
-    time: "09:25",
-    location: "Jarak",
-    participants: 20,
+    file: "workshop-bosko-ciric.jpeg",
+    caption: {
+      sr: "Biolog Boško Ćirić",
+      en: "Biologist Boško Ćirić",
+    },
   },
   {
-    id: 2,
-    date: "2026-11-26",
-    time: "08:45",
-    location: "Sremska Mitrovica – JJ Zmaj",
-    participants: 17,
+    file: "workshop-gymnasium-students.jpeg",
+    caption: {
+      sr: "Učenici i učenice Mitrovačke gimnazije tokom radionice",
+      en: "Students of Mitrovačka Gimnazija during a workshop",
+    },
+  },
+  {
+    file: "workshop-nedeljka-fabri-luka-nikolic.jpeg",
+    caption: {
+      sr: "Profesorka engleskog jezika Nedeljka Fabri i koordinator projekta Luka Nikolić",
+      en: "English teacher Nedeljka Fabri and project coordinator Luka Nikolić",
+    },
   },
 ];
 
-type Status = "past" | "today" | "upcoming";
-
-// Današnji datum (po satu posetioca) u formatu YYYY-MM-DD
-function todayIso() {
-  const now = new Date();
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDate()).padStart(2, "0");
-  return `${now.getFullYear()}-${month}-${day}`;
-}
-
-function getStatus(date: string, today: string): Status {
-  if (date < today) return "past";
-  if (date === today) return "today";
-  return "upcoming";
-}
-
-function formatDate(iso: string, lang: Language) {
-  const [year, month, day] = iso.split("-").map(Number);
-
-  const text = new Date(year, month - 1, day).toLocaleDateString(
-    lang === "sr" ? "sr-Latn-RS" : "en-GB",
-    {
-      weekday: "long",
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    }
-  );
-
-  return text.charAt(0).toUpperCase() + text.slice(1);
-}
-
-const badgeStyles: Record<Status, string> = {
-  past: "bg-gray-100 text-gray-600",
-  today: "bg-green-100 text-green-700",
-  upcoming: "bg-blue-100 text-blue-700",
-};
+const workshopArtworks: WorkshopArtwork[] = [
+  {
+    file: "IMG_2412.jpeg",
+    students: "Iva Vladisavljević, Kristina Malešević i Mladen Šuljmanac",
+    classAndSchool: {
+      sr: "II-6, Mitrovačka gimnazija",
+      en: "Class II-6, Mitrovačka Gimnazija",
+    },
+  },
+  {
+    file: "IMG_2415.jpeg",
+    students: "Elena Ribić i Tamara Jovelić",
+    classAndSchool: {
+      sr: "II-4, Mitrovačka gimnazija",
+      en: "Class II-4, Mitrovačka Gimnazija",
+    },
+  },
+  {
+    file: "IMG_2419.jpeg",
+    students: "Tamara Biuković, Tijana Biuković, Nađa Umetić i Andrea Lukić",
+    classAndSchool: {
+      sr: "II-1, Mitrovačka gimnazija",
+      en: "Class II-1, Mitrovačka Gimnazija",
+    },
+  },
+  {
+    file: "IMG_2421.jpeg",
+    students: "Helena Ponjarac, Andrea Vučković, Emilija Durać i Filip Kern",
+    classAndSchool: {
+      sr: "II-1, Mitrovačka gimnazija",
+      en: "Class II-1, Mitrovačka Gimnazija",
+    },
+  },
+  {
+    file: "IMG_2431.jpeg",
+    students: "Aleksa Milutinović, Ana Knežević, Lana Jovanović i Mia Ružojčić",
+    classAndSchool: {
+      sr: "IV-1, Mitrovačka gimnazija",
+      en: "Class IV-1, Mitrovačka Gimnazija",
+    },
+  },
+  {
+    file: "IMG_2433.jpeg",
+    students: "Andrea Teškić, Jelena Savić, Helena Ilić i Lenka Maricki",
+    classAndSchool: {
+      sr: "IV-1, Mitrovačka gimnazija",
+      en: "Class IV-1, Mitrovačka Gimnazija",
+    },
+  },
+  {
+    file: "IMG_2440.jpeg",
+    students: "Branislava Reljić, Maša Ćosić, Sofija Malbaša i Lazar Kevilj",
+    classAndSchool: {
+      sr: "II-bh, Mitrovačka gimnazija",
+      en: "Class II-bh, Mitrovačka Gimnazija",
+    },
+  },
+  {
+    file: "IMG_2442.jpeg",
+    students: "Jakov Jurišić, Milenko Petaković, Marko Krstić i Marko Geljić",
+    classAndSchool: {
+      sr: "II-5, Mitrovačka gimnazija",
+      en: "Class II-5, Mitrovačka Gimnazija",
+    },
+  },
+  {
+    file: "IMG_2444.jpeg",
+    students: "Ines Bačinović, Mihajlo Beko i Mateja Spasojević",
+    classAndSchool: {
+      sr: "II-bh, Mitrovačka gimnazija",
+      en: "Class II-bh, Mitrovačka Gimnazija",
+    },
+  },
+  {
+    file: "IMG_2446.jpeg",
+    students: "Nevena Erdeljanin, Dunja Zdravković, Anja Popović i Mateja Mojsilović",
+    classAndSchool: {
+      sr: "II-bh, Mitrovačka gimnazija",
+      en: "Class II-bh, Mitrovačka Gimnazija",
+    },
+  },
+  {
+    file: "IMG_2423.jpeg",
+    students: "Željko Simeunović",
+    classAndSchool: {
+      sr: "VIII-7, OŠ „Jovan Jovanović Zmaj” u Jarku",
+      en: "Class VIII-7, Jovan Jovanović Zmaj Primary School in Jarak",
+    },
+  },
+  {
+    file: "IMG_2425.jpeg",
+    students: "Dušan Šuljmanac",
+    classAndSchool: {
+      sr: "VIII-7, OŠ „Jovan Jovanović Zmaj” u Jarku",
+      en: "Class VIII-7, Jovan Jovanović Zmaj Primary School in Jarak",
+    },
+  },
+  {
+    file: "IMG_2427.jpeg",
+    students: "Tara Cvetičanin i Mila Simić",
+    classAndSchool: {
+      sr: "VII-4, OŠ „Jovan Jovanović Zmaj” u Sremskoj Mitrovici",
+      en: "Class VII-4, Jovan Jovanović Zmaj Primary School in Sremska Mitrovica",
+    },
+  },
+  {
+    file: "IMG_2429.jpeg",
+    students: "Milica Mošić i Nevena Ristivojević",
+    classAndSchool: {
+      sr: "VII-4, OŠ „Jovan Jovanović Zmaj” u Sremskoj Mitrovici",
+      en: "Class VII-4, Jovan Jovanović Zmaj Primary School in Sremska Mitrovica",
+    },
+  },
+];
 
 export default function Workshops() {
   const { lang, t } = useLanguage();
-
-  const today = todayIso();
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
@@ -81,53 +163,81 @@ export default function Workshops() {
         {t("workshops.intro")}
       </p>
 
-      <div className="mt-8 sm:mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
-        {workshops.map((workshop) => {
-          const status = getStatus(workshop.date, today);
+      <section className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
+        <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
+          {t("workshops.programTitle")}
+        </h2>
+        <div className="mt-4 max-w-4xl space-y-4 leading-relaxed text-gray-700">
+          <p>{t("workshops.programP1")}</p>
+          <p>{t("workshops.programP2")}</p>
+          <p>{t("workshops.programP3")}</p>
+        </div>
+      </section>
 
-          return (
-            <article
-              key={workshop.id}
-              className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6"
+      <section className="mt-8 sm:mt-10">
+        <h2 className="text-2xl font-bold text-gray-900">
+          {t("workshops.photosTitle")}
+        </h2>
+        <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {workshopPhotos.map((photo) => (
+            <figure
+              key={photo.file}
+              className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
             >
-              <div className="flex items-start justify-between gap-3">
-                <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
-                  <CalendarDays
-                    size={20}
-                    className="text-blue-600 shrink-0"
-                  />
-                  {formatDate(workshop.date, lang)}
-                </h2>
-
-                <span
-                  className={`shrink-0 text-xs font-semibold px-3 py-1 rounded-full ${badgeStyles[status]}`}
-                >
-                  {t(`workshops.status.${status}`)}
-                </span>
+              <div className="aspect-[4/3] bg-gray-50">
+                <img
+                  src={`/images/workshops/${photo.file}`}
+                  alt={photo.caption[lang]}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
               </div>
+              <figcaption className="p-4 font-medium leading-snug text-gray-800">
+                {photo.caption[lang]}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
 
-              <ul className="mt-5 space-y-3 text-gray-700">
-                <li className="flex items-center gap-3">
-                  <Clock size={18} className="text-gray-400 shrink-0" />
-                  <span>{workshop.time}</span>
-                </li>
+      <section className="mt-12 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-12">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+          {t("workshops.galleryTitle")}
+        </h2>
+        <p className="mt-3 max-w-2xl text-gray-600">
+          {t("workshops.galleryIntro")}
+        </p>
 
-                <li className="flex items-center gap-3">
-                  <MapPin size={18} className="text-gray-400 shrink-0" />
-                  <span>{workshop.location}</span>
-                </li>
+        <div className="mt-7 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {workshopArtworks.map((artwork) => {
+            const classAndSchool = artwork.classAndSchool[lang];
 
-                <li className="flex items-center gap-3">
-                  <Users size={18} className="text-gray-400 shrink-0" />
-                  <span>
-                    {t("workshops.participants")}: {workshop.participants}
-                  </span>
-                </li>
-              </ul>
-            </article>
-          );
-        })}
-      </div>
+            return (
+              <figure
+                key={artwork.file}
+                className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-lg"
+              >
+                <div className="aspect-[4/3] overflow-hidden bg-gray-50 p-2">
+                  <img
+                    src={`/images/workshops/${artwork.file}`}
+                    alt={`${artwork.students} — ${classAndSchool}`}
+                    loading="lazy"
+                    className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
+                  />
+                </div>
+                <figcaption className="p-4">
+                  <p className="font-semibold leading-snug text-gray-900">
+                    {artwork.students}
+                  </p>
+                  <p className="mt-1 text-sm text-gray-600">
+                    {classAndSchool}
+                  </p>
+                </figcaption>
+              </figure>
+            );
+          })}
+        </div>
+      </section>
     </main>
   );
 }

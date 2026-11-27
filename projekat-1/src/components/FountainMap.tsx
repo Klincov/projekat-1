@@ -173,17 +173,20 @@ export default function FountainMap() {
                     {localized(fountain.name, lang)}
                   </h3>
 
-                  <p className="text-sm text-gray-600 mt-1">
-                    {t("map.fountainStatus")}: {t(`status.${fountain.status}`)}
-                  </p>
+                  {fountain.status && (
+                    <p className="text-sm text-gray-600 mt-1">
+                      {t("map.fountainStatus")}:{" "}
+                      {t(`status.${fountain.status}`)}
+                    </p>
+                  )}
 
-                  <p className="text-sm text-gray-600">
-                    {fountain.waterStatus === "potable"
-                      ? t("water.potable")
-                      : fountain.waterStatus === "no_water"
-                        ? t("water.no_water")
-                        : t("water.unknown")}
-                  </p>
+                  {fountain.waterStatus && (
+                    <p className="text-sm text-gray-600">
+                      {fountain.waterStatus === "potable"
+                        ? t("water.potable")
+                        : t("water.no_water")}
+                    </p>
+                  )}
                 </div>
               </Popup>
             </Marker>

@@ -37,6 +37,8 @@ const englishLithology: Record<string, string> = {
   laporac: "marl",
   "srednjezrni šljunak": "medium-grained gravel",
   "srednjezrni pesak": "medium-grained sand",
+  "pesak (kaptirani sloj, III hidrogeološka zona)":
+    "sand (captured layer, Hydrogeological Zone III)",
   "srednjezrni pesak, kaptirani sloj":
     "medium-grained sand, captured layer",
   "refulisani pesak": "hydraulically placed sand",
@@ -242,15 +244,16 @@ export default function FountainModal({
             {fountain.profile ? (
               <>
                 <p>
-                  {t("map.fountainStatus")}: {t(`status.${fountain.status}`)}
+                  {fountain.status &&
+                    `${t("map.fountainStatus")}: ${t(`status.${fountain.status}`)}`}
                 </p>
-                <p className="mb-4">
-                  {fountain.waterStatus === "potable"
-                    ? t("water.potable")
-                    : fountain.waterStatus === "no_water"
-                      ? t("water.no_water")
-                      : t("water.unknown")}
-                </p>
+                {fountain.waterStatus && (
+                  <p className="mb-4">
+                    {fountain.waterStatus === "potable"
+                      ? t("water.potable")
+                      : t("water.no_water")}
+                  </p>
+                )}
 
                 {fountain.profile.totalDepth && (
                   <p>
@@ -314,11 +317,11 @@ export default function FountainModal({
                     </>
                   )}
               </>
-            ) : (
+            ) : fountain.description ? (
               <p className="whitespace-pre-line">
                 {localized(fountain.description, lang)}
               </p>
-            )}
+            ) : null}
           </div>
         </div>
       </div>
