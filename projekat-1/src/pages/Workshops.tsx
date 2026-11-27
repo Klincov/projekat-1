@@ -1,4 +1,5 @@
 import { useLanguage } from "../i18n/LanguageContext";
+import ProjectLogos from "../components/ProjectLogos";
 import type { Language } from "../i18n/translations";
 
 type WorkshopArtwork = {
@@ -118,6 +119,14 @@ const workshopArtworks: WorkshopArtwork[] = [
     },
   },
   {
+    file: "IMG_2454.jpeg",
+    students: "Korina Kočić, Olga Martinović i Dunja Mrvaljević",
+    classAndSchool: {
+      sr: "II-6, Mitrovačka gimnazija",
+      en: "Class II-6, Mitrovačka Gimnazija",
+    },
+  },
+  {
     file: "IMG_2423.jpeg",
     students: "Željko Simeunović",
     classAndSchool: {
@@ -155,19 +164,19 @@ export default function Workshops() {
   const { lang, t } = useLanguage();
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-      <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
+    <main className="page-shell">
+      <h1 className="page-title">
         {t("workshops.title")}
       </h1>
-      <p className="mt-4 text-gray-600 max-w-2xl">
+      <p className="page-intro mt-4">
         {t("workshops.intro")}
       </p>
 
-      <section className="mt-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
-        <h2 className="text-xl font-bold text-gray-900 sm:text-2xl">
+      <section className="content-panel mt-8 p-6 sm:p-8">
+        <h2 className="section-title text-xl sm:text-2xl">
           {t("workshops.programTitle")}
         </h2>
-        <div className="mt-4 max-w-4xl space-y-4 leading-relaxed text-gray-700">
+        <div className="mt-4 max-w-4xl space-y-4 leading-relaxed text-[#506967]">
           <p>{t("workshops.programP1")}</p>
           <p>{t("workshops.programP2")}</p>
           <p>{t("workshops.programP3")}</p>
@@ -175,16 +184,16 @@ export default function Workshops() {
       </section>
 
       <section className="mt-8 sm:mt-10">
-        <h2 className="text-2xl font-bold text-gray-900">
+        <h2 className="section-title text-2xl">
           {t("workshops.photosTitle")}
         </h2>
         <div className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {workshopPhotos.map((photo) => (
             <figure
               key={photo.file}
-              className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm"
+              className="visual-card overflow-hidden"
             >
-              <div className="aspect-[4/3] bg-gray-50">
+              <div className="aspect-[4/3] bg-[#e7f2ed]">
                 <img
                   src={`/images/workshops/${photo.file}`}
                   alt={photo.caption[lang]}
@@ -192,7 +201,7 @@ export default function Workshops() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <figcaption className="p-4 font-medium leading-snug text-gray-800">
+              <figcaption className="p-4 font-medium leading-snug text-[#315551]">
                 {photo.caption[lang]}
               </figcaption>
             </figure>
@@ -200,11 +209,11 @@ export default function Workshops() {
         </div>
       </section>
 
-      <section className="mt-12 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-12">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+      <section className="workshop-divider mt-12 border-t pt-10 sm:mt-16 sm:pt-12">
+        <h2 className="section-title text-2xl sm:text-3xl">
           {t("workshops.galleryTitle")}
         </h2>
-        <p className="mt-3 max-w-2xl text-gray-600">
+        <p className="page-intro mt-3">
           {t("workshops.galleryIntro")}
         </p>
 
@@ -215,9 +224,9 @@ export default function Workshops() {
             return (
               <figure
                 key={artwork.file}
-                className="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-lg"
+                className="visual-card group overflow-hidden"
               >
-                <div className="aspect-[4/3] overflow-hidden bg-gray-50 p-2">
+                <div className="aspect-[4/3] overflow-hidden bg-[#edf5f1] p-2">
                   <img
                     src={`/images/workshops/${artwork.file}`}
                     alt={`${artwork.students} — ${classAndSchool}`}
@@ -226,10 +235,10 @@ export default function Workshops() {
                   />
                 </div>
                 <figcaption className="p-4">
-                  <p className="font-semibold leading-snug text-gray-900">
+                  <p className="font-semibold leading-snug text-[#214b48]">
                     {artwork.students}
                   </p>
-                  <p className="mt-1 text-sm text-gray-600">
+                  <p className="mt-1 text-sm text-[#667b78]">
                     {classAndSchool}
                   </p>
                 </figcaption>
@@ -238,6 +247,8 @@ export default function Workshops() {
           })}
         </div>
       </section>
+
+      <ProjectLogos />
     </main>
   );
 }

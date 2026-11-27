@@ -27,10 +27,8 @@ export default function Navbar() {
         end
         onClick={() => mobile && setMenuOpen(false)}
         className={({ isActive }) =>
-          `${mobile ? "block rounded-lg px-3 py-2.5" : ""} text-sm font-medium transition-colors ${
-            isActive
-              ? "text-blue-600"
-              : "text-gray-600 hover:text-blue-600"
+          `${mobile ? "mobile-nav-link block px-3 py-2.5" : "nav-link"} text-sm font-medium transition-colors ${
+            isActive ? "active" : ""
           }`
         }
       >
@@ -42,7 +40,7 @@ export default function Navbar() {
     <div
       role="group"
       aria-label={t("nav.language")}
-      className="flex items-center rounded-full border border-gray-200 p-0.5 text-xs font-semibold"
+      className="flex items-center rounded-full border border-[#d6e7df] bg-white/80 p-0.5 text-xs font-semibold"
     >
       {languages.map((code) => (
         <button
@@ -52,8 +50,8 @@ export default function Navbar() {
           aria-pressed={lang === code}
           className={`min-w-10 rounded-full px-3 py-1.5 transition-colors ${
             lang === code
-              ? "bg-blue-600 text-white"
-              : "text-gray-600 hover:text-blue-600"
+              ? "bg-[#168b79] text-white shadow-sm"
+              : "text-[#607472] hover:text-[#087c71]"
           }`}
         >
           {code.toUpperCase()}
@@ -63,9 +61,9 @@ export default function Navbar() {
   );
 
   return (
-    <nav className="bg-white border-b border-gray-200">
+    <nav className="site-nav">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 min-h-16 lg:h-20 flex items-center justify-between gap-3">
-        <NavLink to="/" className="min-w-0 text-lg sm:text-xl font-bold text-gray-900">
+        <NavLink to="/" className="brand-link min-w-0 text-lg sm:text-xl font-bold">
           {t("nav.brand")}
         </NavLink>
 
@@ -82,7 +80,7 @@ export default function Navbar() {
             aria-label={menuOpen ? t("nav.closeMenu") : t("nav.openMenu")}
             aria-expanded={menuOpen}
             aria-controls="mobile-navigation"
-            className="flex h-11 w-11 items-center justify-center rounded-lg text-gray-700 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+            className="flex h-11 w-11 items-center justify-center rounded-xl text-[#45625f] hover:bg-[#e8f4ee] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#168b79]"
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
@@ -90,7 +88,7 @@ export default function Navbar() {
       </div>
 
       {menuOpen && (
-        <div id="mobile-navigation" className="lg:hidden border-t border-gray-100 px-4 py-2">
+        <div id="mobile-navigation" className="lg:hidden border-t border-[#e4eee9] px-4 py-2">
           <div className="mx-auto max-w-7xl flex flex-col gap-1">
             {renderLinks(true)}
           </div>

@@ -13,6 +13,10 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.language": "Jezik",
     "nav.openMenu": "Otvori navigaciju",
     "nav.closeMenu": "Zatvori navigaciju",
+    "credits.ariaLabel": "Logotipi projekta i fondacije",
+    "credits.supportedBy": "Projekat realizovan uz podršku",
+    "credits.projectLogoAlt": "Digitalne javne česme Sremske Mitrovice",
+    "credits.foundationLogoAlt": "Fondacija EVZ",
 
     "home.eyebrow": "Otkrijte bogatstvo podzemnih voda i upoznajte javne česme našeg grada!",
     "home.title": "Digitalne česme Sremske Mitrovice",
@@ -35,7 +39,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "project.p2":
       "Osnovni cilj projekta jeste da građanima na jednostavan i savremen način približi informacije o javnim česmama, njihovoj lokaciji, hidrogeološkim karakteristikama i ispravnosti vode. Javne česme predstavljaju značajan, ali nedovoljno istražen i promovisan deo lokalnog istorijskog i prirodnog nasleđa. Iako brojni građani svakodnevno koriste vodu sa ovih česmi, informacije o njima često nisu dovoljno dostupne široj javnosti.",
     "project.p3":
-      "U okviru projekta sprovedeno je mapiranje i fotografisanje arteških česmi, kao i prikupljanje i obrada hidrogeološke dokumentacije. Istraživanje je obuhvatilo podatke o dubini, geološkom sastavu zemljišta i temperaturi vode. Podaci su predstavljeni na internet stranici sa interaktivnom mapom, a na javnim česmama planirano je postavljanje informativnih pločica sa QR kodovima koji vode do digitalnog sadržaja.",
+      "U okviru projekta sprovedeno je mapiranje i fotografisanje arteških česmi, kao i prikupljanje i obrada hidrogeološke dokumentacije. Istraživanje je obuhvatilo podatke o dubini, geološkom sastavu zemljišta i temperaturi vode. Podaci su predstavljeni na internet stranici sa interaktivnom mapom, a na javnim česmama planirano je postavljanje informativnih pločica sa QR kodovima koji vode do digitalnog sadržaja česmi.",
     "project.p4":
       "U saradnji sa dve škole u Sremskoj Mitrovici realizovano je osam edukativnih radionica za 100 učenika osnovnoškolskog i srednjoškolskog uzrasta. Teme su obuhvatile odgovorno korišćenje vodnih resursa, zaštitu životne sredine, građanski aktivizam i značaj učešća mladih u rešavanju ekoloških problema lokalne zajednice. Radionice su realizovane uz stručnu podršku Boška Ćirića, biologa iz JKP Vodovod Sremska Mitrovica.",
     "project.p5":
@@ -99,6 +103,10 @@ export const translations: Record<Language, Record<string, string>> = {
     "nav.language": "Language",
     "nav.openMenu": "Open navigation",
     "nav.closeMenu": "Close navigation",
+    "credits.ariaLabel": "Project and foundation logos",
+    "credits.supportedBy": "Project made possible with support from",
+    "credits.projectLogoAlt": "Digital Public Fountains of Sremska Mitrovica",
+    "credits.foundationLogoAlt": "EVZ Foundation",
 
     "home.eyebrow": "Discover the wealth of groundwater and get to know our city's public fountains!",
     "home.title": "Digital Fountains of Sremska Mitrovica",
@@ -121,7 +129,7 @@ export const translations: Record<Language, Record<string, string>> = {
     "project.p2":
       "The project's main goal is to make information about public fountains accessible to citizens in a simple, modern way, including their locations, hydrogeological characteristics, and water safety. Public fountains are a significant, yet insufficiently researched and promoted, part of local historical and natural heritage. Although many citizens use water from these fountains every day, information about them is often not readily available to the public.",
     "project.p3":
-      "The project included mapping and photographing artesian fountains, as well as collecting and processing hydrogeological documentation. The research covered information about depth, geological composition of the ground, and water temperature. The data is presented on a website with an interactive map, and information plaques with QR codes linking to the digital content are planned for public fountains.",
+      "The project included mapping and photographing artesian fountains, as well as collecting and processing hydrogeological documentation. The research covered information about depth, geological composition of the ground, and water temperature. The data is presented on a website with an interactive map, and information plaques with QR codes linking to digital content about the fountains are planned for public fountains.",
     "project.p4":
       "Eight educational workshops were held in collaboration with two schools in Sremska Mitrovica, involving 100 primary and secondary school students. Topics included responsible water-resource use, environmental protection, civic activism, and the importance of youth participation in addressing local environmental issues. The workshops received expert support from Boško Ćirić, a biologist at JKP Vodovod Sremska Mitrovica.",
     "project.p5":

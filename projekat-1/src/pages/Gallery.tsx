@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import { fountains, localized, type Fountain } from "../data/fountain";
 import FountainModal from "../components/FountainModal";
+import ProjectLogos from "../components/ProjectLogos";
 import { useLanguage } from "../i18n/LanguageContext";
 
 type GalleryItem = {
@@ -27,9 +28,9 @@ export default function Gallery() {
   const [selected, setSelected] = useState<GalleryItem | null>(null);
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-      <h1 className="text-3xl sm:text-4xl font-bold">{t("gallery.title")}</h1>
-      <p className="mt-4 text-gray-600">{t("gallery.intro")}</p>
+    <main className="page-shell">
+      <h1 className="page-title">{t("gallery.title")}</h1>
+      <p className="page-intro mt-4">{t("gallery.intro")}</p>
 
       <div className="mt-8 sm:mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {galleryItems.map((item) => {
@@ -40,10 +41,10 @@ export default function Gallery() {
               key={`${item.fountain.id}-${item.image}`}
               type="button"
               onClick={() => setSelected(item)}
-              className="text-left bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+              className="visual-card text-left overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#168b79]"
             >
               {/* Svi okviri imaju iste proporcije */}
-              <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden bg-[#e7f2ed]">
                 <img
                   src={item.image}
                   alt={name}
@@ -52,7 +53,7 @@ export default function Gallery() {
                 />
               </div>
 
-              <p className="p-4 text-base font-semibold text-gray-900">
+              <p className="p-4 text-base font-semibold text-[#214b48]">
                 {name}
               </p>
             </button>
@@ -72,6 +73,8 @@ export default function Gallery() {
           onClose={() => setSelected(null)}
         />
       )}
+
+      <ProjectLogos />
     </main>
   );
 }

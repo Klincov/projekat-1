@@ -93,7 +93,7 @@ export default function FountainMap() {
   return (
     <>
       {/* MAPA */}
-      <div className="w-full h-[60vh] min-h-[360px] sm:h-[550px] rounded-2xl overflow-hidden shadow-lg border border-gray-200">
+      <div className="map-frame w-full h-[60vh] min-h-[360px] sm:h-[550px]">
         <MapContainer
           center={[44.9764, 19.6122]}
           zoom={15}

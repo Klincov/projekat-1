@@ -13,7 +13,7 @@ import "./App.css";
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-gray-50">
+      <div className="site-shell min-h-screen">
         <Navbar />
 
         <Routes>

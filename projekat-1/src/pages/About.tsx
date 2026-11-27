@@ -11,9 +11,9 @@ export default function About() {
     useState<Fountain | null>(null);
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-      <h1 className="text-3xl sm:text-4xl font-bold">{t("about.title")}</h1>
-      <p className="mt-4 text-gray-600">{t("about.intro")}</p>
+    <main className="page-shell">
+      <h1 className="page-title">{t("about.title")}</h1>
+      <p className="page-intro mt-4">{t("about.intro")}</p>
 
       <div className="mt-8 sm:mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
         {fountains.map((fountain) => {
@@ -25,10 +25,10 @@ export default function About() {
               key={fountain.id}
               type="button"
               onClick={() => setSelectedFountain(fountain)}
-              className="text-left bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg transition overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
+              className="visual-card text-left overflow-hidden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#168b79]"
             >
               {/* Svi okviri imaju iste proporcije */}
-              <div className="aspect-[4/3] bg-gray-100">
+              <div className="aspect-[4/3] bg-[#e7f2ed]">
                 {cover ? (
                   <img
                     src={cover}
@@ -43,7 +43,7 @@ export default function About() {
                 )}
               </div>
 
-              <h2 className="p-4 text-base sm:text-lg font-semibold text-gray-900">
+              <h2 className="p-4 text-base sm:text-lg font-semibold text-[#214b48]">
                 {name}
               </h2>
             </button>
